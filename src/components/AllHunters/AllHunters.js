@@ -50,6 +50,7 @@ const AllHunters = () => {
         "Content-Type": "application/json",
       })
       .then((res) => {
+        console.log(res, "responseeeeeee")
         setDatas(res.data.hunters);
       })
       .catch((err) => {
@@ -267,7 +268,7 @@ const AllHunters = () => {
                                   />
                                 </div>
                               </td>
-                              <td>{Item.fullName}</td>
+                              <td>{Item.userType == "2" ? Item.fullName + "(Guest Hunter)" : Item.fullName + "(Hunter)"}</td>
                               <td>{Item.email}</td>
                               <td>{Item.totalJoinedHunts}</td>
                               <td>{moment(Item.date).format("L")}</td>

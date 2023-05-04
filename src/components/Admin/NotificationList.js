@@ -67,6 +67,8 @@ export default function CustomizedDialogs() {
         setCurrency(event.target.value);
     };
 
+    
+
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -259,6 +261,7 @@ export default function CustomizedDialogs() {
           <select style={{width: '61ch', padding: '16px', borderRadius: '5px'}} onChange={(e) => handleChange(e)}>
           <option>Choose..</option>  
           <option onChange={(e) => handleChange(e)} value='0'>ALL</option>
+         
             {
               /** This is where we have used our options variable */
               options

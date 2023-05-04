@@ -150,14 +150,14 @@ const HuntDetail = () => {
                           <span className="hunt-detail-label">
                             Total Killed :
                           </span>
-                          {huntData.totalKilled}
+                          {huntData.totalKilled || 0}
                         </div>
                         <div className="hunt-detail-information">
                           {" "}
                           <span className="hunt-detail-label">
                             Total Missed :
                           </span>
-                          {huntData.totalMissed}
+                          {huntData.totalMissed || 0}
                         </div>
                       </div>
                     </div>
@@ -168,12 +168,12 @@ const HuntDetail = () => {
                           <span className="hunt-detail-label">
                             Total Wound :
                           </span>
-                          {huntData.totalWound}
+                          {huntData.totalWound || 0}
                         </div>
                         <div className="hunt-detail-information">
                           {" "}
                           <span className="hunt-detail-label">Total Fire:</span>
-                          {huntData.totalFire}
+                          {huntData.totalFire || 0}
                         </div>
                       </div>
                     </div>
@@ -266,11 +266,11 @@ const HuntDetail = () => {
                             effect="blur"
                           />}</td>
                     <td>{Item.hunterName}</td>
-                    <td>{Item.totalShots}</td>
-                    <td>{Item.noOfKilled}</td>
-                    <td>{Item.noOfMissed}</td>
-                    <td>{Item.noOfWound}</td>
-                    <td>{Item.noOfFire}</td>
+                    <td>{Item.totalShots || 0}</td>
+                    <td>{Item.noOfKilled || 0}</td>
+                    <td>{Item.noOfMissed || 0}</td>
+                    <td>{Item.noOfWound || 0}</td>
+                    <td>{Item.noOfFire || 0}</td>
                     {/* <td>
                       <DeleteForever style={{ color: "#912c00" }} />
                     </td> */}

@@ -68,7 +68,10 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
       setError(null)
       setIsLoading(false)
       dispatch({ type: 'LOGIN_SUCCESS', UserType: JSON.stringify(response.data.user.type) })
-      toast.success("Login Success")
+      toast.success("Login Success",{
+        theme: "colored",
+        autoClose: 1000
+      })
       history.push('/app/dashboard')
     }
     else {
@@ -77,7 +80,9 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
       history.push("/login");
     }
   }).catch((err) => {
-    toast.error("User email or password incorrect")
+    toast.error("User email or password incorrect",{
+      autoClose: 1000
+    })
   });
 }
 
@@ -90,5 +95,12 @@ function signOut(dispatch, history) {
   localStorage.removeItem("profileImage");
   dispatch({ type: "SIGN_OUT_SUCCESS" });
   history.push("/login");
-  toast.success("Signout Success")
+  toast.success("Signout Success",{
+    autoClose:1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined
+  })
 }

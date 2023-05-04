@@ -56,7 +56,8 @@ const HunterDetail = () => {
         axios.post(URL + '/web/api/getHunterDetailsById',{hunter_id:id},{
             Accept: 'Application',
             'Content-Type': 'application/json'
-        }).then(res=>{  
+        }).then(res=>{ 
+           // console.log(res, "resposneeeee") 
             setHunterData(res.data.data)
             setDetails(res.data.data.hunter)
         }).catch(err=>{
@@ -230,11 +231,11 @@ const HunterDetail = () => {
                                     visibleByDefault={false}
                                   />}</td>
                                         <td>{Item.huntName}</td>
-                                        <td>{Item.totalShots}</td>
-                                        <td>{Item.killed}</td>
-                                        <td>{Item.missed}</td>
-                                        <td>{Item.wound}</td>
-                                        <td>{Item.fire}</td>
+                                        <td>{Item.totalShots || 0}</td>
+                                        <td>{Item.killed || 0}</td>
+                                        <td>{Item.missed || 0}</td>
+                                        <td>{Item.wound || 0}</td>
+                                        <td>{Item.fire || 0}</td>
                                         {/* <td><DeleteForever style={{ color: "#912c00" }} /></td> */}
                                     </tr>
                                 )
