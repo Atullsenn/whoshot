@@ -14,6 +14,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import moment from 'moment';
 import defaultwhoshotpic from "../../images/defaultwhoshotpic.png";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -88,138 +90,140 @@ const HuntDetail = () => {
   //pagination
 
   return (
-    <div className="container-fluid ">
+    <>
+    {huntData == "" ? 
+          <Box sx={{ display: 'flex' }} style={{display: "flex", justifyContent: "center"}}>
+      <CircularProgress style={{position:"relative", top:"300px"}}/>
+    </Box> :
+    <div className="container-fluid ">     
       <div className="add-location">
         <div className="booking-wrapper">
           <div className="row">
+           
             <div className="mb-5">
-              <div className="py-2">
-                <div className="heading-top">
-                  <h2>Hunt Details</h2>
+                <div className="py-2">
+                  <div className="heading-top">
+                    <h2>Hunt Details</h2>
+                  </div>
                 </div>
-              </div>
-              <div className="row mx-0">
-                <div className="col-lg-4 px-0">
-                  <div className="d-flex">
-                    <div>
-                      <Stack direction="row" spacing={2}>
-                        <StyledBadge
-                          overlap="circular"
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right",
-                          }}
-                          variant="dot"
-                        >
-                          <LazyLoadImage
-                            style={{
-                              width: "40px",
-                              height: "40px",
-                              borderRadius: "50px",
+                <div className="row mx-0">
+                  <div className="col-lg-4 px-0">
+                    <div className="d-flex">
+                      <div>
+                        <Stack direction="row" spacing={2}>
+                          <StyledBadge
+                            overlap="circular"
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "right",
                             }}
-                            src={
-                              huntData.huntProfile == ""
+                            variant="dot"
+                          >
+                            <LazyLoadImage
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50px",
+                              }}
+                              src={huntData.huntProfile == ""
                                 ? defaultwhoshotpic
-                                : `${URL}/image/${huntData.huntProfile}`
-                            }
-                            effect="blur"
-                          />
-                        </StyledBadge>
-                      </Stack>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center px-2 mx-2">
-                      <div className="hunt-detail-information">
-                        {" "}
-                        <span className="hunt-detail-label">Hunt Name :</span>
-                        {huntData.huntName}
+                                : `${URL}/image/${huntData.huntProfile}`}
+                              effect="blur" />
+                          </StyledBadge>
+                        </Stack>
                       </div>
-                      <div className="hunt-detail-information">
-                        {" "}
-                        <span className="hunt-detail-label">Create Date :</span>
-                        {moment(huntData.createdDate).format('LLL')}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 px-0">
-                  <div className="h-100 d-flex justify-content-center align-items-center">
-                    <div className="w-50 d-flex flex-column align-items-center">
-                      <div>
+                      <div className="d-flex flex-column justify-content-center px-2 mx-2">
                         <div className="hunt-detail-information">
                           {" "}
-                          <span className="hunt-detail-label">
-                            Total Killed :
-                          </span>
-                          {huntData.totalKilled || 0}
+                          <span className="hunt-detail-label">Hunt Name :</span>
+                          {huntData.huntName}
                         </div>
                         <div className="hunt-detail-information">
                           {" "}
-                          <span className="hunt-detail-label">
-                            Total Missed :
-                          </span>
-                          {huntData.totalMissed || 0}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-50 d-flex flex-column align-items-center">
-                      <div>
-                        <div className="hunt-detail-information">
-                          {" "}
-                          <span className="hunt-detail-label">
-                            Total Wound :
-                          </span>
-                          {huntData.totalWound || 0}
-                        </div>
-                        <div className="hunt-detail-information">
-                          {" "}
-                          <span className="hunt-detail-label">Total Fire:</span>
-                          {huntData.totalFire || 0}
+                          <span className="hunt-detail-label">Create Date :</span>
+                          {moment(huntData.createdDate).format('LLL')}
                         </div>
                       </div>
                     </div>
                   </div>
+                  <div className="col-lg-4 px-0">
+                    <div className="h-100 d-flex justify-content-center align-items-center">
+                      <div className="w-50 d-flex flex-column align-items-center">
+                        <div>
+                          <div className="hunt-detail-information">
+                            {" "}
+                            <span className="hunt-detail-label">
+                              Total Killed :
+                            </span>
+                            {huntData.totalKilled || 0}
+                          </div>
+                          <div className="hunt-detail-information">
+                            {" "}
+                            <span className="hunt-detail-label">
+                              Total Missed :
+                            </span>
+                            {huntData.totalMissed || 0}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="w-50 d-flex flex-column align-items-center">
+                        <div>
+                          <div className="hunt-detail-information">
+                            {" "}
+                            <span className="hunt-detail-label">
+                              Total Wound :
+                            </span>
+                            {huntData.totalWound || 0}
+                          </div>
+                          <div className="hunt-detail-information">
+                            {" "}
+                            <span className="hunt-detail-label">Total Fire:</span>
+                            {huntData.totalFire || 0}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 px-0">
+                    <div>
+                      <div className="d-flex justify-content-end align-items-center">
+                        <span className="hunt-detail-label">Admin :</span>
+                        {/* <Switch checked={true} color="success" /> */}
+                        {huntData.adminName}
+                      </div>
+                      <div className="d-flex justify-content-end pe-2 align-items-center">
+                        <span className="hunt-detail-label">
+                          Total Participants :{" "}
+                        </span>
+                        <div className="hunt-detail-information">
+                          {huntData.totalParticipants}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-lg-4 px-0">
+              </div><div className="py-2 d-flex justify-content-between align-items-center">
                   <div>
-                    <div className="d-flex justify-content-end align-items-center">
-                      <span className="hunt-detail-label">Admin :</span>
-                      {/* <Switch checked={true} color="success" /> */}
-                      {huntData.adminName}
+                    <div className="heading-top">
+                      <h2>List of Hunters involved in Hunt</h2>
                     </div>
-                    <div className="d-flex justify-content-end pe-2 align-items-center">
-                      <span className="hunt-detail-label">
-                        Total Participants :{" "}
-                      </span>
-                      <div className="hunt-detail-information">
-                        {huntData.totalParticipants}
+                  </div>
+                  <div>
+                    <div className="table-data-search-box-manage">
+                      <div className="search-bar">
+                        <input
+                          type="text"
+                          className="searchTerm-input"
+                          placeholder="Search"
+                          onChange={(e) => setSearch(e.target.value)} />
+                        <button type="submit" className="searchButtons">
+                          <i className="fa fa-search" aria-hidden="true"></i>
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="py-2 d-flex justify-content-between align-items-center">
-              <div>
-                <div className="heading-top">
-                  <h2>List of Hunters involved in Hunt</h2>
-                </div>
-              </div>
-              <div>
-                <div className="table-data-search-box-manage">
-                  <div className="search-bar">
-                    <input
-                      type="text"
-                      className="searchTerm-input"
-                      placeholder="Search"
-                      onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <button type="submit" className="searchButtons">
-                      <i className="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div className="manage-admins-main-area">
@@ -294,7 +298,10 @@ const HuntDetail = () => {
           </div>
         </div>
       </div>
+
     </div>
+    }
+    </>
   );
 };
 

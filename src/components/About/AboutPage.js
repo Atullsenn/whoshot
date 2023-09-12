@@ -9,6 +9,7 @@ const AboutPage = () => {
   const [heading, setHeading] = useState([]);
   const [description, setDescription] = useState([]);
 
+
   //formValidation
   const [headingError, setHeadingError] = useState("");
   const headingRegex = /^[#.0-9a-zA-Z\s,-]{0,50}$/;

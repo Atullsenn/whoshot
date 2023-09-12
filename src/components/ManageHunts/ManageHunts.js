@@ -318,10 +318,10 @@ const ManageHunts = ({ label }) => {
                       </td>
                       <td>{Item.huntName}</td>
                       <td>{Item.totalParticipants}</td>
-                      <td>{moment(Item.createdDate).format("L")}</td>
+                      <td>{moment(Item.createdDate).format("DD-MM-YYYY")}</td>
                       {
                         Item.endDate ?
-                      <td>{moment(Item.endDate).format("L")}</td>
+                      <td>{Item.endDate}</td>
                       :
                       <td>{"----"}</td>
                   }
